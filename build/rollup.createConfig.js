@@ -5,7 +5,7 @@ const image = require('rollup-plugin-img')
 const vue = require('rollup-plugin-vue')
 const commonjs = require('rollup-plugin-commonjs')
 const { terser } = require('rollup-plugin-terser')
-const replace = require('rollup-plugin-replace')
+const replace = require('@rollup/plugin-replace')
 const json = require('rollup-plugin-json')
 const postcss = require('rollup-plugin-postcss')
 const filesize = require('rollup-plugin-filesize')
@@ -13,9 +13,11 @@ const { cssUrl } = require('@sixian/css-url')
 const fs = require('fs')
 const { getAssetsPath, env, fsExistsSync, chalkConsole } = require('./utils')
 const { esDir } = require('../config/rollup.build.config')
-const aliasConfig = require('../config/alias')
-const { styleOutputPath, externalMap,es } = require('../config/index')
+const { styleOutputPath, external,es,globals } = require('../config/index')
 const banner = require('../config/banner')
+const alias = require('@rollup/plugin-alias')
+const aliasConfig = require('../config/alias')
+
 const isEs = (fmt) => fmt === esDir
 
 function createPlugins({ min } = {}) {
@@ -48,14 +50,7 @@ function createPlugins({ min } = {}) {
         fontOutput: getAssetsPath('/fonts'),
         cssOutput: getAssetsPath(styleOutputPath)
       })],
-      use: [
-        [
-          'less',
-          {
-            javascriptEnabled: true
-          }
-        ]
-      ],
+      use: [ ['less',{ javascriptEnabled: true } ] ],
       inject: false,
       // sourceMap: true,
       extensions: ['.css', '.less'],
@@ -63,7 +58,10 @@ function createPlugins({ min } = {}) {
     }),
     replace({
       exclude,
-      'process.env.NODE_ENV': JSON.stringify(env)
+      'process.env.NODE_ENV': JSON.stringify(env),
+    }),
+    alias({
+      entries: aliasConfig.entries
     }),
     
   ]
@@ -97,10 +95,10 @@ function build(builds) {
  */
 async function buildEntry(config) {
   const { output, suffix, input, format, moduleName } = config
- 
+  
   const inputOptions = {
     input,
-    external: Object.keys(externalMap),
+    external,
     plugins: createPlugins(config)
   }
   const fullName = output + suffix
@@ -111,13 +109,13 @@ async function buildEntry(config) {
     format,
     name: moduleName, 
     // exports: 'named',
-    globals: externalMap,
+    globals,
     exports: 'auto'
     // entryFileNames: file
   }
+
   const bundle = await rollup.rollup(inputOptions)
   let { output: outputData } = await bundle.generate(outOptions)
-
   await write({ output: outputData, fileName: output, format, fullName, file })
 }
 /**
@@ -126,6 +124,7 @@ async function buildEntry(config) {
  */
 async function write({ output, file, fileName, format, fullName } = {}) {
   for (const { type, code, source } of output) {
+
     if (type === 'asset') {
       const cssFileName = `${fileName}.css`
       const filePath = isEs(format)

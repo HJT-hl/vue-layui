@@ -1,0 +1,18 @@
+/*屏幕尺寸*/
+/* 小型屏幕(平板) */
+@sm: 768px;
+/* 中型屏幕(桌面) */
+@md: 992px;
+/* 大型屏幕(桌面) */
+@lg: 1200px;
+.screen-media(@s, @m, @l) {
+    @media screen and (min-width: @sm) {
+        width: @s;
+    }
+    @media screen and (min-width: @md) {
+        width: @m;
+    }
+    @media screen and (min-width: @lg) {
+        width: @l;
+    }
+}

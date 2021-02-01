@@ -4,6 +4,7 @@ module.exports = {
   entries: {
     '@': utils.resolve('../src'),
     '@p': utils.resolve('../packages'),
-    '@e': utils.resolve('../examples')
+    '@e': utils.resolve('../examples'),
+    '@u' : utils.resolve('../packages/utils')
   }
 }

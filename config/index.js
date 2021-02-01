@@ -8,7 +8,8 @@ module.exports = {
   es : 'es',
   clearConsole: config.clearConsole,
   // 打包忽略
-  externalMap: {
+  external: ['vue'],
+  globals:{
     vue: 'Vue'
   }
 }
