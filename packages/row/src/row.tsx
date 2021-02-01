@@ -6,6 +6,7 @@ interface rowType {
 }
 
 export default defineComponent({
+  name: 'la-row',
   props: {
     colSpace: Number as PropType<number>
   },
@@ -17,8 +18,6 @@ export default defineComponent({
         '--p': props.colSpace / 2 + 'px'
       }
     }
-    console.log(style)
-
     return () => <div class='layui-row space' style={style}>{slots.default && slots.default()}</div>
   }
 })

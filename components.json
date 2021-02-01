@@ -1,5 +1,6 @@
 {
-    "container": "packages/container/index.tsx",
-    "row": "packages/row/index.tsx",
-    "col": "packages/col/index.tsx"
+  "container": "packages/container/index.tsx",
+  "row": "packages/row/index.tsx",
+  "col": "packages/col/index.tsx",
+  "icon": "packages/icon/index.tsx"
 }
