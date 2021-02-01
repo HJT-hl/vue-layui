@@ -1,22 +1,20 @@
 import { defineComponent, h, ref } from 'vue'
 import Container from '../packages/container/index'
-import Anim from '../packages/anim/index'
+import Button from '../packages/button/index'
+import ButtonGroup from '../packages/buttonGroup/index'
 
 export default defineComponent({
   setup () {
-    const a = ref(false)
-    const trigger = () => {
-      a.value = !a.value
+    const onClick = () => {
+      console.log('我被点击了')
     }
     return () => <Container>
-      <Anim animate={'scaleSpring'} trigger={a.value} loop={true}>
-        <div
-          style={{ width: '100px', height: '100px', backgroundColor: 'pink' }}
-          onClick={trigger}
-        >
-          {a.value ? 'true' : 'false'}
-        </div>
-      </Anim>
+      <ButtonGroup>
+        <Button onClick={onClick} >增加</Button>
+        <Button onClick={onClick} >编辑</Button>
+        <Button onClick={onClick} >删除</Button>
+      </ButtonGroup>
+
     </Container>
   }
 })
