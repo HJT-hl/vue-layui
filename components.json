@@ -5,5 +5,6 @@
   "icon": "packages/icon/index.tsx",
   "anim": "packages/anim/index.tsx",
   "button": "packages/button/index.tsx",
-  "buttonGroup": "packages/buttonGroup/index.tsx"
+  "buttonGroup": "packages/buttonGroup/index.tsx",
+  "buttonContainer": "packages/buttonContainer/index.tsx"
 }
