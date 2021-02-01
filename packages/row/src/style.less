@@ -1,8 +1,17 @@
-@import '../../_assets/base.less';
+@import '../../_assets/reset.less';
 
-.row:before,
-.row:after {
+.layui-row:before,
+.layui-row:after {
     content: '';
     display: block;
     clear: both;
 }
+.space {
+    --m : 0px;
+    --p : 0px;
+    margin: var(--m);
+    & > * {
+        padding: var(--p);
+    }
+}
+

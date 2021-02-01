@@ -1,4 +1,5 @@
 {
-    "widght" : "packages/widght/index.ts",
-    "container" : "packages/container/index.ts"
+    "container": "packages/container/index.tsx",
+    "row": "packages/row/index.tsx",
+    "col": "packages/col/index.tsx"
 }
