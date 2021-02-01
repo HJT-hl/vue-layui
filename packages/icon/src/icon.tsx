@@ -8,7 +8,7 @@ interface iconType {
 }
 
 export default defineComponent({
-  name: 'la-icon',
+  name: 'lay-icon',
   props: {
     icon: {
       type: String as PropType<string>,
@@ -24,7 +24,9 @@ export default defineComponent({
     }
   },
   setup (props: iconType) {
-    const icon = `layui-icon-${props.icon}`
-    return () => <i class={'layui-icon ' + icon} style={{ fontSize: props.size + 'px', color: props.color }}></i>
+    return () => {
+      const icon = `layui-icon-${props.icon}`
+      return <i class={'layui-icon ' + icon} style={{ fontSize: props.size + 'px', color: props.color }}></i>
+    }
   }
 })

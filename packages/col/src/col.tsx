@@ -14,6 +14,7 @@ interface ColType {
 }
 
 export default defineComponent({
+  name: 'lay-col',
   props: {
     xs: Number as PropType<number>,
     sm: Number as PropType<number>,
@@ -25,25 +26,26 @@ export default defineComponent({
     mdOffset: Number as PropType<number>
   },
   setup (props: ColType, { slots }) {
-    const className: string[] = ['layui-col']
     const screenMedia = ['xs', 'sm', 'md', 'lg']
-    screenMedia.forEach((item) => {
-      // @ts-ignore
-      if (props[item] !== undefined) {
-        // @ts-ignore
-        className.push(`layui-col-${item}${props[item]}`)
-      }
-    })
     const offsets = ['xsOffset', 'smOffset', 'mdOffset', 'lgOffset']
-    offsets.forEach((item) => {
-      // @ts-ignore
-      if (props[item] !== undefined) {
-        const offsetName = toLine(item)
+    return () => {
+      const className: string[] = ['layui-col']
+      screenMedia.forEach((item) => {
         // @ts-ignore
-        className.push(`layui-col-${offsetName}${props[item]}`)
-      }
-    })
-
-    return () => <div class={className.join(' ')}>{slots.default && slots.default()}</div>
+        if (props[item] !== undefined) {
+          // @ts-ignore
+          className.push(`layui-col-${item}${props[item]}`)
+        }
+      })
+      offsets.forEach((item) => {
+        // @ts-ignore
+        if (props[item] !== undefined) {
+          const offsetName = toLine(item)
+          // @ts-ignore
+          className.push(`layui-col-${offsetName}${props[item]}`)
+        }
+      })
+      return <div class={className.join(' ')}>{slots.default && slots.default()}</div>
+    }
   }
 })
