@@ -11,5 +11,7 @@
   "progress": "packages/progress/index.tsx",
   "quote": "packages/quote/index.tsx",
   "field": "packages/field/index.tsx",
-  "card": "packages/card/index.tsx"
+  "card": "packages/card/index.tsx",
+  "collapse": "packages/collapse/index.tsx",
+  "collapseItem": "packages/collapseItem/index.tsx"
 }

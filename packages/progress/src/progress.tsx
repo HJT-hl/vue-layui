@@ -9,10 +9,10 @@ interface ProgressType {
   textStyle?: string | CSSProperties;
 }
 
+type textStyleType = string | CSSProperties
 export default defineComponent({
   name: 'lay-progress',
   props: {
-    // @ts-ignore
     value: {
       type: Number as PropType<number>,
       required: true
@@ -29,13 +29,11 @@ export default defineComponent({
       type: String as PropType<string>,
       default: ''
     },
-    // @ts-ignore
     textStyle: {
-      type: [String as PropType<string>, Object as PropType<CSSProperties>],
+      type: [String, Object] as PropType<textStyleType>,
       default: ''
     }
   },
-  // @ts-ignore
   setup (props: ProgressType, { slots }) {
     return () => {
       const { value, isBig, showPercent, color, textStyle } = props

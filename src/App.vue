@@ -1,27 +1,20 @@
 <template>
-  <Container>
-    <Field>
-      <template v-slot:title>
-        字段集区块 - 默认风格
-      </template>
-      <template v-slot:content>
-        内容区域
-      </template>
-    </Field>
-  </Container>
+  <Collapse v-model:activeIndex="val"></Collapse>
 
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Container from '../packages/container/index'
-import Field from '../packages/field/index'
+import { defineComponent,ref } from 'vue'
+import Collapse from '../packages/collapse/index'
 
 export default defineComponent({
   name: 'App',
   components: {
-    Container,
-    Field
+    Collapse
+  },
+  setup(){
+    const val = ref('125125')
+    return {val}
   }
 })
 </script>

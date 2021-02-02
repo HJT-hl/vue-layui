@@ -5,7 +5,7 @@ interface cardType {
   shadow?: string;
   bodyStyle?: string | CSSProperties
 }
-
+type bodyStyleType = string | CSSProperties;
 export default defineComponent({
   name: 'lay-card',
   props: {
@@ -15,7 +15,7 @@ export default defineComponent({
     },
     // @ts-ignore
     bodyStyle: {
-      type: [String as PropType<string>, Object as PropType<CSSProperties>],
+      type: [String, Object ] as PropType<bodyStyleType>,
       default: { padding: '20px' }
     }
   },

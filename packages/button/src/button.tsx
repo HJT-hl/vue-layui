@@ -5,7 +5,7 @@ import { emptyFun } from '../../_utils/utils'
 interface buttonType {
   type?: string;
   onClick?: () => void;
-  size?: string | number;
+  size?: string;
   fluid?: boolean;
   radius?: boolean;
 }

@@ -1,7 +1,7 @@
 import { defineComponent, h, ref } from 'vue'
 import Container from '../packages/container/index'
-import Card from '../packages/card/index'
-
+import Collapse from '../packages/collapse/index'
+import CollapseItem from '../packages/collapseItem/index'
 export default defineComponent({
   setup () {
     const onClick = () => {
@@ -11,9 +11,12 @@ export default defineComponent({
       header: () => '字段集区块 - 默认风格',
       body: () => ' 内容区域'
     }
+    const a = ref('a')
     return () => <Container>
       <div style={{ height: '100px' }}></div>
-      <Card shadow={'hover'} v-slots={slots} bodyStyle={{ padding: '20px' }}></Card>
+      <Collapse v-model={[a,'a',["modifier"]]}>
+        {a}
+      </Collapse>
     </Container>
   }
 })

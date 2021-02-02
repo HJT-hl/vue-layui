@@ -6,6 +6,7 @@ interface fieldType {
   marginLeft?: number | string;
 }
 
+type marginLeftType = number | string
 export default defineComponent({
   name: 'lay-field',
   props: {
@@ -13,13 +14,11 @@ export default defineComponent({
       type: Boolean as PropType<boolean>,
       default: false
     },
-    // @ts-ignore
     marginLeft: {
-      type: [Number as PropType<number>, String as PropType<string>],
+      type: [Number, String] as PropType<marginLeftType>,
       default: 20
     }
   },
-  // @ts-ignore
   setup (props: fieldType, { slots }) {
     return () => {
       let marginLeft = ''
