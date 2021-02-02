@@ -2,14 +2,14 @@ import { defineComponent, h, PropType } from 'vue'
 import './style.less'
 
 interface QuoteType {
-  backgroundColor?: string;
+  color?: string;
   leftColor?: string;
 }
 
 export default defineComponent({
   name: 'lay-quote',
   props: {
-    backgroundColor: {
+    color: {
       type: String as PropType<string>,
       default: ''
     },
@@ -24,15 +24,15 @@ export default defineComponent({
   },
   setup (props, { slots }) {
     return () => {
-      const { backgroundColor, leftColor, nm } = props
+      const { color, leftColor, nm } = props
       let style = {}
       if (nm) {
         style = {
-          borderColor: backgroundColor,
+          borderColor: color,
           borderLeftColor: leftColor
         }
       } else {
-        style = { backgroundColor, borderLeftColor: leftColor }
+        style = { backgroundColor: color, borderLeftColor: leftColor }
       }
       return <blockquote
         class={'layui-elem-quote ' + (nm ? 'layui-quote-nm' : '')}

@@ -18,21 +18,22 @@ export default defineComponent({
       default: '#FF5722'
     }
   },
-  setup (props, { slots }) {
+  setup (props: badgeType, { slots }) {
     let isSlots = true
     let className = 'layui-badge'
-    let color = props.color
+    const color = props.color
+    const style = { backgroundColor: color, borderColor: color }
     if (props.type === 'dot') {
       isSlots = false
       className = 'layui-badge-dot'
     } else if (props.type === 'rim') {
       className = 'layui-badge-rim'
-      color = '#fff'
+      style.backgroundColor = '#fff'
     }
     return () => {
       return <div
         class={className}
-        style={{ backgroundColor: color }}
+        style={style}
       >{isSlots && slots.default && slots.default()}</div>
     }
   }
