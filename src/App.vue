@@ -1,5 +1,5 @@
 <template>
-  <Collapse v-model:activeIndex="val"></Collapse>
+  <Collapse v-model="activeKey"></Collapse>
 
 </template>
 
@@ -13,8 +13,8 @@ export default defineComponent({
     Collapse
   },
   setup(){
-    const val = ref('125125')
-    return {val}
+    const activeKey = ref('125125')
+    return {activeKey}
   }
 })
 </script>
