@@ -8,5 +8,6 @@
   "buttonGroup": "packages/buttonGroup/index.tsx",
   "buttonContainer": "packages/buttonContainer/index.tsx",
   "badge": "packages/badge/index.tsx",
-  "progress": "packages/progress/index.tsx"
+  "progress": "packages/progress/index.tsx",
+  "quote": "packages/quote/index.tsx"
 }
