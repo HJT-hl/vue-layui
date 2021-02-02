@@ -9,5 +9,6 @@
   "buttonContainer": "packages/buttonContainer/index.tsx",
   "badge": "packages/badge/index.tsx",
   "progress": "packages/progress/index.tsx",
-  "quote": "packages/quote/index.tsx"
+  "quote": "packages/quote/index.tsx",
+  "field": "packages/field/index.tsx"
 }

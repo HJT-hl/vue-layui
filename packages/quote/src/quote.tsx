@@ -4,6 +4,7 @@ import './style.less'
 interface QuoteType {
   color?: string;
   leftColor?: string;
+  nm?: boolean;
 }
 
 export default defineComponent({
@@ -22,7 +23,7 @@ export default defineComponent({
       default: false
     }
   },
-  setup (props, { slots }) {
+  setup (props: QuoteType, { slots }) {
     return () => {
       const { color, leftColor, nm } = props
       let style = {}
