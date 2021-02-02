@@ -25,10 +25,18 @@ export default defineComponent({
   setup (props, { slots }) {
     return () => {
       const { backgroundColor, leftColor, nm } = props
-
+      let style = {}
+      if (nm) {
+        style = {
+          borderColor: backgroundColor,
+          borderLeftColor: leftColor
+        }
+      } else {
+        style = { backgroundColor, borderLeftColor: leftColor }
+      }
       return <blockquote
-        class={'layui-elem-quote ' + (nm && 'layui-quote-nm')}
-        style={{ backgroundColor, borderLeft: leftColor }}>
+        class={'layui-elem-quote ' + (nm ? 'layui-quote-nm' : '')}
+        style={style}>
         {slots.default && slots.default()}
       </blockquote>
     }
