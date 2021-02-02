@@ -7,5 +7,6 @@
   "button": "packages/button/index.tsx",
   "buttonGroup": "packages/buttonGroup/index.tsx",
   "buttonContainer": "packages/buttonContainer/index.tsx",
-  "badge": "packages/badge/index.tsx"
+  "badge": "packages/badge/index.tsx",
+  "progress": "packages/progress/index.tsx"
 }
