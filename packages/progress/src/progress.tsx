@@ -40,7 +40,7 @@ export default defineComponent({
     return () => {
       const { value, isBig, showPercent, color, textStyle } = props
       const text = value * 100 + '%'
-      return <div class={'layui-progress ' + (isBig && 'layui-progress-big')}>
+      return <div class={'layui-progress ' + (isBig ? 'layui-progress-big' : '')}>
         <div class="layui-progress-bar" style={{ width: text, backgroundColor: color }}>
           {
             showPercent ? <span class={'layui-progress-text'} style={textStyle}>{text}</span> : ''
