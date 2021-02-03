@@ -9,7 +9,7 @@ interface collapseItemType {
 
 type ActiveKeyType = Array<string> | string;
 export default defineComponent({
-  name: 'lay-collapse-item',
+  name: 'LayCollapseItem',
   props: {
     name: {
       type: String as PropType<string>,

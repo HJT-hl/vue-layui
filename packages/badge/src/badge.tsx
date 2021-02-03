@@ -7,7 +7,7 @@ interface badgeType {
 }
 
 export default defineComponent({
-  name: 'lay-badge',
+  name: 'LayBadge',
   props: {
     type: {
       type: String as PropType<string>,

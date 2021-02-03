@@ -8,7 +8,7 @@ interface fieldType {
 
 type marginLeftType = number | string
 export default defineComponent({
-  name: 'lay-field',
+  name: 'LayField',
   props: {
     isRow: {
       type: Boolean as PropType<boolean>,

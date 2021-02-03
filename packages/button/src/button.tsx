@@ -11,7 +11,7 @@ interface buttonType {
 }
 
 export default defineComponent({
-  name: 'lay-button',
+  name: 'LayButton',
   props: {
     type: {
       type: String as PropType<string>,

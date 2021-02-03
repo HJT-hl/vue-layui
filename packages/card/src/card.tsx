@@ -7,7 +7,7 @@ interface cardType {
 }
 type bodyStyleType = string | CSSProperties;
 export default defineComponent({
-  name: 'lay-card',
+  name: 'LayCard',
   props: {
     shadow: {
       type: String as PropType<string>,

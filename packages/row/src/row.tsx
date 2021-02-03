@@ -6,7 +6,7 @@ interface rowType {
 }
 
 export default defineComponent({
-  name: 'lay-row',
+  name: 'LayRow',
   props: {
     colSpace: Number as PropType<number>
   },

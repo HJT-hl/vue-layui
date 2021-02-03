@@ -8,7 +8,7 @@ interface iconType {
 }
 
 export default defineComponent({
-  name: 'lay-icon',
+  name: 'LayIcon',
   props: {
     icon: {
       type: String as PropType<string>,

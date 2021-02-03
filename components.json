@@ -13,5 +13,6 @@
   "field": "packages/field/index.tsx",
   "card": "packages/card/index.tsx",
   "collapse": "packages/collapse/index.tsx",
-  "collapseItem": "packages/collapseItem/index.tsx"
+  "collapseItem": "packages/collapseItem/index.tsx",
+  "timeline" : "packages/timeline/index.tsx"
 }

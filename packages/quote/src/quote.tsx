@@ -8,7 +8,7 @@ interface QuoteType {
 }
 
 export default defineComponent({
-  name: 'lay-quote',
+  name: 'LayQuote',
   props: {
     color: {
       type: String as PropType<string>,

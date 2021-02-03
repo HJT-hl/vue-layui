@@ -11,7 +11,7 @@ interface ProgressType {
 
 type textStyleType = string | CSSProperties
 export default defineComponent({
-  name: 'lay-progress',
+  name: 'LayProgress',
   props: {
     value: {
       type: Number as PropType<number>,

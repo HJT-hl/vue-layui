@@ -14,7 +14,7 @@ interface ColType {
 }
 
 export default defineComponent({
-  name: 'lay-col',
+  name: 'LayCol',
   props: {
     xs: Number as PropType<number>,
     sm: Number as PropType<number>,
