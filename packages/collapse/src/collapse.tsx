@@ -5,7 +5,7 @@ import { triggerElement } from '../../_utils/utils'
 
 interface collapseType {
   modelValue?: string | string[];
-  change?: (name: string | string[]) => void
+  onChange?: (name: string | string[]) => void
 }
 
 type ActiveKeyType = Array<string> | string;
@@ -15,27 +15,25 @@ export default defineComponent({
     modelValue: {
       type: [Array, String] as PropType<ActiveKeyType>
     },
-    'update:modelValue': {
+    'onUpdate:modelValue': {
       type: Function as PropType<() => void>
     },
-    change: {
+    onChange: {
       type: Function as PropType<(name: string | string[]) => void>
     }
   },
   setup (props: collapseType, { slots, emit }) {
-
     return () => {
-
       const collapseItemClick = (name: string) => {
         let newName: string | string[]
         if (Array.isArray(props.modelValue)) {
           newName = triggerElement(props.modelValue, name)
           // proxy to array
-          props.change && props.change([...newName])
+          props.onChange && props.onChange([...newName])
         } else {
-          if(props.modelValue === name) newName = ''
+          if (props.modelValue === name) newName = ''
           else newName = name
-          props.change && props.change(newName)
+          props.onChange && props.onChange(newName)
         }
         emit('update:modelValue', newName)
       }
@@ -43,7 +41,7 @@ export default defineComponent({
       let children = slots.default && slots.default()
       if (children) {
         children = childrenAddProps(children, {
-          collapseItemClick,
+          onCollapseItemClick: collapseItemClick,
           activeName: props.modelValue
         })
       }

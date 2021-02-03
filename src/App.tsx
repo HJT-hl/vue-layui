@@ -11,7 +11,7 @@ export default defineComponent({
     const a = ref('1')
     return () => <Container>
       <div style={{ height: '100px' }}></div>
-      <Collapse v-model={a.value} change={onClick}>
+      <Collapse v-model={a.value} onChange={onClick}>
         <CollapseItem name={'1'} v-slots={{ title: () => <span>1</span>, content: () => '1' }}/>
         <CollapseItem name={'2'} v-slots={{ title: () => '2', content: () => '2' }}/>
         <CollapseItem name={'3'} v-slots={{ title: () => '3', content: () => '3' }}/>
