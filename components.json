@@ -14,5 +14,6 @@
   "card": "packages/card/index.tsx",
   "collapse": "packages/collapse/index.tsx",
   "collapseItem": "packages/collapseItem/index.tsx",
-  "timeline" : "packages/timeline/index.tsx"
+  "timeline": "packages/timeline/index.tsx",
+  "timelineItem": "packages/timelineItem/index.tsx"
 }

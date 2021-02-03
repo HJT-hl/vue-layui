@@ -1,0 +1,54 @@
+@import '../../_assets/icon.less';
+
+.layui-timeline-item {
+  position: relative;
+  padding-bottom: 20px;
+  --line-color : #e6e6e6;
+}
+
+.layui-timeline-item:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  width: 1px;
+  height: 100%;
+  background-color: var(--line-color);
+}
+
+.layui-timeline-axis{
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  line-height: 20px;
+  background-color: #fff;
+  color: #5FB878;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.layui-timeline-axis:hover {
+  color: #FF5722;
+}
+
+
+.layui-timeline-item:last-child:before {
+  display: none;
+}
+
+.layui-timeline-item:first-child:before {
+  display: block;
+}
+
+.layui-timeline-content {
+  padding-left: 25px;;
+}
+
+.layui-timeline-title {
+  position: relative;
+  top: -2px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+

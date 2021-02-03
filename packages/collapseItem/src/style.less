@@ -1,13 +1,4 @@
-/** 图标字体 **/
-@font-face {
-  font-family: 'layui-icon';
-  src: url('../../_assets/font/iconfont.eot?v=256');
-  src: url('../../_assets/font/iconfont.eot?v=256#iefix') format('embedded-opentype'),
-  url('../../_assets/font/iconfont.woff2?v=256') format('woff2'),
-  url('../../_assets/font/iconfont.woff?v=256') format('woff'),
-  url('../../_assets/font/iconfont.ttf?v=256') format('truetype'),
-  url('../../_assets/font/iconfont.svg?v=256#layui-icon') format('svg');
-}
+@import '../../_assets/icon.less';
 
 .layui-show {
   display: block !important;
@@ -45,7 +36,7 @@
   line-height: 22px;
   color: #666;
   overflow: hidden;
-  transition: height,padding 0.3s;
+  transition: height, padding 0.3s;
 }
 
 .layui-colla-close {
@@ -65,6 +56,7 @@
   -moz-osx-font-smoothing: grayscale;
   transition: rotate .3s;
 }
+
 .layui-colla-icon-open {
   transform: rotate(90deg)
 }

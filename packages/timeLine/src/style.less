@@ -1,19 +1,74 @@
 
-/* 按钮容器 */
-.layui-btn-container {
-  font-size: 0;
+.layui-timeline {
+  padding-left: 5px;
 }
 
-.layui-btn-container .layui-btn {
-  margin-right: 10px;
-  margin-bottom: 10px;
+.layui-timeline-left {
+  .layui-timeline-item:before {
+    left: 0;
+  }
+
+  .layui-timeline-axis {
+    left: 0;
+    transform: translateX(-50%);
+  }
 }
 
-.layui-btn-container .layui-btn + .layui-btn {
-  margin-left: 0;
+.layui-timeline-right {
+  .layui-timeline-item:before {
+    right: 0; //改
+  }
+  //改
+  .layui-text {
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  .layui-timeline-axis {
+    right: 0;//改
+    transform: translateX(50%);
+  }
+}
+.layui-timeline-alternate{
+  .layui-timeline-item:nth-child(2n+1) {
+    margin-left: 50%;
+    &:before {
+      left: 0;
+      transform: translateX(-50%);
+    }
+    .layui-timeline-axis {
+      left: 0;
+      transform: translateX(-50%);
+    }
+  }
+
+  .layui-timeline-item:nth-child(2n){
+    width: 50%;
+    &:before {
+      right: 0;
+    }
+    .layui-timeline-axis {
+      right: 0;//改
+      transform: translateX(50%);
+    }
+    .layui-text {
+      text-align: right;
+      padding-right: 20px;
+    }
+  }
+
 }
 
-.layui-table .layui-btn-container .layui-btn {
-  margin-bottom: 9px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
 

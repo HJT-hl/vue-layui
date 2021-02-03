@@ -8,7 +8,7 @@ interface animType {
 }
 
 export default defineComponent({
-  name: 'lay-anim',
+  name: 'LayAnim',
   props: {
     animate: {
       type: String as PropType<string>,
