@@ -16,5 +16,6 @@
   "collapseItem": "packages/collapseItem/index.tsx",
   "timeline": "packages/timeline/index.tsx",
   "timelineItem": "packages/timelineItem/index.tsx",
-  "rate": "packages/rate/index.tsx"
+  "rate": "packages/rate/index.tsx",
+  "slider": "packages/slider/index.tsx"
 }
