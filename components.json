@@ -17,5 +17,7 @@
   "timeline": "packages/timeline/index.tsx",
   "timelineItem": "packages/timelineItem/index.tsx",
   "rate": "packages/rate/index.tsx",
-  "slider": "packages/slider/index.tsx"
+  "slider": "packages/slider/index.tsx",
+  "tab": "packages/tab/tab.tsx",
+  "tabPane": "packages/tabPane/tabPane.tsx"
 }

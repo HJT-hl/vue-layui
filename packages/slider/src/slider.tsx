@@ -20,7 +20,6 @@ interface SliderType {
   disabled: boolean;
 }
 
-let count = 0
 export default defineComponent({
   name: 'LaySlider',
   props: propsType,

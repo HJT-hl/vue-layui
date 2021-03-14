@@ -9,7 +9,7 @@ const replace = require('@rollup/plugin-replace')
 const json = require('rollup-plugin-json')
 const postcss = require('rollup-plugin-postcss')
 const filesize = require('rollup-plugin-filesize')
-const { cssUrl } = require('@sixian/css-url')
+const { cssUrl, importLoader } = require('@sixian/css-url')
 const fs = require('fs')
 const { getAssetsPath, env, fsExistsSync, chalkConsole } = require('./utils')
 const { esDir } = require('../config/rollup.build.config')
@@ -17,12 +17,13 @@ const { styleOutputPath, external,es,globals } = require('../config/index')
 const banner = require('../config/banner')
 const alias = require('@rollup/plugin-alias')
 const aliasConfig = require('../config/alias')
-
+const typescript  = require('rollup-plugin-typescript2')
 const isEs = (fmt) => fmt === esDir
 
 function createPlugins({ min } = {}) {
   const exclude = 'node_modules/**'
   const plugins = [
+    typescript(),
     commonjs(),
     vue({
       css: false
@@ -35,7 +36,7 @@ function createPlugins({ min } = {}) {
     babel({
       babelHelpers : 'bundled',
       exclude: 'node_modules/**',
-      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      extensions: ['.ts','.tsx','.js', '.jsx'  ],
     }),
     image({
       hash: false,
@@ -46,15 +47,14 @@ function createPlugins({ min } = {}) {
     }),
     postcss({
       plugins: [cssUrl({
-        imgOutput: getAssetsPath('/imgs'), 
+        imgOutput: getAssetsPath('/imgs'),
         fontOutput: getAssetsPath('/fonts'),
         cssOutput: getAssetsPath(styleOutputPath)
       })],
-      use: [ ['less',{ javascriptEnabled: true } ] ],
+      use: [ ['less',{ javascriptEnabled: true } ] , 'import-url'],
       inject: false,
-      // sourceMap: true,
-      extensions: ['.css', '.less'],
       extract : true,
+      loaders: [importLoader]
     }),
     replace({
       exclude,
@@ -63,7 +63,7 @@ function createPlugins({ min } = {}) {
     alias({
       entries: aliasConfig.entries
     }),
-    
+
   ]
   if (min) {
     plugins.push(terser())
@@ -95,7 +95,7 @@ function build(builds) {
  */
 async function buildEntry(config) {
   const { output, suffix, input, format, moduleName } = config
-  
+
   const inputOptions = {
     input,
     external,
@@ -107,7 +107,7 @@ async function buildEntry(config) {
     // dir: getAssetsPath(),
     file,
     format,
-    name: moduleName, 
+    name: moduleName,
     // exports: 'named',
     globals,
     exports: 'auto'

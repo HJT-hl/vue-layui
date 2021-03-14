@@ -15,7 +15,20 @@ export function childAddProps (child: VNode, props: {}): VNode {
 }
 
 export function childrenAddProps (children: VNode[], props: {}): VNode[] {
-  return children.map(child =>
-    childAddProps(child, props)
-  )
+  const c = [];
+
+  for(let i=0;i<children.length;i++) {
+    if(typeof children[i].type ==='symbol'){
+      if(Array.isArray(children[i].children)){
+        // @ts-ignore
+        c.push(...children[i].children.map(child =>
+          childAddProps(child, props)
+        ))
+      }
+
+    }else {
+      c.push( childAddProps(children[i],props))
+    }
+  }
+  return c
 }

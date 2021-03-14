@@ -1,40 +1,36 @@
 import { defineComponent, h, ref, watchEffect } from 'vue'
-import Container from '../packages/container/index'
-import Slider from '../packages/slider/index'
-
+import Tab from '../packages/tab'
+import TabPane from '../packages/tabPane'
+import Button from '../packages/button'
 export default defineComponent({
   setup () {
-    const v = ref([10, 50])
-    const t = ref(true)
-    const color = ref('#5be22c')
+    const v = ref(1)
 
-    setInterval(() => {
-      v.value = [10, 20]
-    }, 3000)
-    return () => <div>
-      <Slider
-        disabled={true}
-        v-model={v.value}
-        range={true}
-        vertical={true}
-        height={'600px'}
-        tips={true}
-        showstep={false}
-        step={1}
-        color={'#5be22c'}
-        min={0}
-        max={100}
-        tipsColor={'#666'}
-        textColor={'#eee'}
-        onChange={(value: number | number[]) => {
-          if (typeof value === 'number') {
-            if (value < 70) color.value = '#5be22c'
-            else if (value < 120) color.value = '#f8d90a'
-            else color.value = '#f80a2e'
-          }
-        }}
-      />
-      <div>{v.value.toString()}</div>
+    const color = ref('#5be22c')
+    const arr = ref( [
+      { label: '标题1', name: 1, content: '内容1' },
+      { label: '标题2', name: 2, content: '内容2' },
+      { label: '标题3', name: 3, content: '内容3' },
+      { label: '标题4', name: 4, content: '内容4' },
+    ])
+    let num = 5;
+    const add = ()=>{
+      arr.value.push({label: '标题'+num,name: num,content:'内容'+num})
+      num++;
+    }
+
+    return () => <div style='width:600px;margin: 100px auto;'>
+      <Tab v-model={v.value}
+           onClick={console.log}
+           onRemove={console.log}
+           type={'brief'}
+           closable={true}
+      >
+        {arr.value.map((item) => <TabPane label={item.label} name={item.name}>{item.content}</TabPane>)}
+
+      </Tab>
+      <Button onClick={add}>增加</Button>
+      <div>{v.value}</div>
     </div>
   }
 })
