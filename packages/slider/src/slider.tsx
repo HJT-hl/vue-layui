@@ -1,4 +1,4 @@
-import { defineComponent, h, ComponentInternalInstance, ref } from 'vue'
+import { defineComponent, h, ref } from 'vue'
 import propsType from './propsType'
 import './style.less'
 import { arrayEqual } from '../../_utils/utils'

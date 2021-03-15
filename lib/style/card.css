@@ -37,11 +37,11 @@
   margin: 0;
 }
 .layui-card-always-shadow {
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px 0 rgb(0 0 0%);
 }
 .layui-card-hover-shadow {
   transition: box-shadow 0.3s;
 }
 .layui-card-hover-shadow:hover {
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px 0 rgb(0 0 0%);
 }

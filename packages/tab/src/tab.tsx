@@ -1,6 +1,6 @@
-import { defineComponent, h, PropType, ref, Ref } from 'vue'
+import { defineComponent, h, PropType, ref, Ref, Fragment, VNode } from 'vue'
 import { className } from '../../_utils/utils'
-import { childrenAddProps } from '../../_utils/component'
+import { getChildren } from '../../_utils/component'
 import './style.less'
 
 type modelValue = number | string;
@@ -41,36 +41,26 @@ export default defineComponent({
     }
   },
   setup (props: TabType, { slots, emit }) {
-    const titles: Ref<{ label: string, name: modelValue }[]> = ref([])
     const closeTab: Ref<{ label: string, name: modelValue }[]> = ref([])
     return () => {
-      const updateTitles = (lastTitle: string, newtitle: string, name: modelValue) => {
-        if (!titles.value.find((item) => item.label === lastTitle)) titles.value.push({ label: lastTitle, name })
-        else if (lastTitle !== newtitle) {
-          titles.value = titles.value.map((item) => {
-            if (item.label === lastTitle) return { label: newtitle, name }
-            return item
-          })
-        }
-      }
-      const children = slots.default && slots.default()
-      if (children) {
-        childrenAddProps(children, { updateTitles, show: props.modelValue })
-      }
+      const children: any = slots.default && slots.default()
+      const c: any[] = getChildren(children, 'LayTabPane')
       const handleTabClick = (tabbar: { label: string, name: modelValue }) => {
         emit('update:modelValue', tabbar.name)
         props.onClick && props.onClick(tabbar)
       }
-      const displayTab = titles.value.filter((item) => !closeTab.value.find((close) => item.name === close.name))
+      const displayTab = c.filter(({ props: p }) => {
+        return !closeTab.value.find((close) => p.name === close.name)
+      })
       const handleTabClose = (e: MouseEvent, tabbar: { label: string, name: modelValue }) => {
         e.stopPropagation()
 
         if (tabbar.name === props.modelValue) {
-          const index = displayTab.findIndex((item) => tabbar.name === item.name)
+          const index = displayTab.findIndex(({ props: p }) => tabbar.name === p.name)
           if (displayTab[index + 1]) {
-            emit('update:modelValue', displayTab[index + 1].name)
+            emit('update:modelValue', displayTab[index + 1].props.name)
           } else if (displayTab[index - 1]) {
-            emit('update:modelValue', displayTab[index - 1].name)
+            emit('update:modelValue', displayTab[index - 1].props.name)
           } else {
             emit('update:modelValue', '')
           }
@@ -82,6 +72,7 @@ export default defineComponent({
         '--brief-font--': props.briefColor[0],
         '--brief-underline--': props.briefColor[1]
       }
+      // @ts-ignore
       return <div
         style={style}
         class={className(['layui-tab', {
@@ -89,14 +80,14 @@ export default defineComponent({
           'layui-tab-card': props.type === 'card'
         }])}>
         <ul class='layui-tab-title'>
-          {displayTab.map((item) => <li
-            class={className({ 'layui-this': item.name === props.modelValue })}
-            onClick={() => handleTabClick(item)}
-          >{item.label}{props.closable &&
-          <i class='layui-icon  layui-tab-close' onClick={(e) => handleTabClose(e, item)}>&#x1006;</i>}</li>)}
+          {displayTab.map(({ props: p }) => <li
+            class={className({ 'layui-this': p.name === props.modelValue })}
+            onClick={() => handleTabClick(p)}
+          >{p.label}{props.closable &&
+          <i class='layui-icon  layui-tab-close' onClick={(e) => handleTabClose(e, p)}>&#x1006;</i>}</li>)}
         </ul>
         <div class="layui-tab-content">
-          {children}
+          {displayTab.find(({ props: p }) => p.name === props.modelValue)}
         </div>
       </div>
     }

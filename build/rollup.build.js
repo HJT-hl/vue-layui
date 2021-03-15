@@ -15,9 +15,9 @@ formatTypeList.forEach(({ format, min, suffix } = {}) => {
     pkg.push({ min, format, suffix, moduleName: output, input, output })
 
   }
-  
+
 })
 pkg = pkg.concat(addons)
 
 build(pkg)
-// pkg.forEach(build)
+

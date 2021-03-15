@@ -1,6 +1,6 @@
 import { defineComponent, h, ref, watchEffect } from 'vue'
 import Tab from '../packages/tab'
-import TabPane from '../packages/tabPane'
+import TabPane from '../packages/tab-pane'
 import Button from '../packages/button'
 export default defineComponent({
   setup () {
@@ -17,6 +17,7 @@ export default defineComponent({
     const add = ()=>{
       arr.value.push({label: '标题'+num,name: num,content:'内容'+num})
       num++;
+      v.value = 3;
     }
 
     return () => <div style='width:600px;margin: 100px auto;'>
@@ -27,10 +28,12 @@ export default defineComponent({
            closable={true}
       >
         {arr.value.map((item) => <TabPane label={item.label} name={item.name}>{item.content}</TabPane>)}
+         <TabPane label='标题7' name={7} >内容7</TabPane>
 
       </Tab>
       <Button onClick={add}>增加</Button>
       <div>{v.value}</div>
+      <a href="">hhhhhhhhhhhhhh</a>
     </div>
   }
 })

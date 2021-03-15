@@ -49,7 +49,9 @@ function createPlugins({ min } = {}) {
       plugins: [cssUrl({
         imgOutput: getAssetsPath('/imgs'),
         fontOutput: getAssetsPath('/fonts'),
-        cssOutput: getAssetsPath(styleOutputPath)
+        cssOutput: getAssetsPath(styleOutputPath),
+        imgExtensions : /\.(png|jpg|jpeg|gif)$/,
+        fontExtensions: /.(ttf|woff|woff2|eot|svg)$/
       })],
       use: [ ['less',{ javascriptEnabled: true } ] , 'import-url'],
       inject: false,

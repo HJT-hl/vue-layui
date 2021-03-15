@@ -1,18 +1,4 @@
 /* * Copyright © 2021-2021 siluxianren * Released under the MIT License. */
-
-/** 图标字体 **/
-@font-face {
-  font-family: 'layui-icon';
-  src: url('../fonts/iconfont.eot?v=256');
-  src: url('../fonts/iconfont.eot?v=256#iefix') format('embedded-opentype'), url('../fonts/iconfont.woff2?v=256') format('woff2'), url('../fonts/iconfont.woff?v=256') format('woff'), url('../fonts/iconfont.ttf?v=256') format('truetype'), url('../imgs/iconfont.svg?v=256#layui-icon') format('svg');
-}
-.layui-icon {
-  font-family: "layui-icon" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 .layui-tab {
   margin: 10px 0;
   text-align: left !important;
