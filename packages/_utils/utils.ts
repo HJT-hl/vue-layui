@@ -22,30 +22,28 @@ export function arrayEqual (obj1: any[], obj2: any[]): boolean {
   return true
 }
 
-
-export function className(name: any): string {
-  const classs = [];
-  if( name.toString() === "[object Object]"){
-    for(const key in name) {
-      if(name[key]) {
+export function className (name: Array<string | Record<string, boolean>> | Record<string, boolean>): string {
+  const classs: string[] = []
+  if (name.toString() === '[object Object]') {
+    for (const key in name) {
+      // @ts-ignore
+      if (name[key]) {
         classs.push(key)
       }
     }
   }
-  if(Array.isArray(name)){
-    name.forEach((item)=>{
-      if(typeof item === 'string'){
+  if (Array.isArray(name)) {
+    name.forEach((item) => {
+      if (typeof item === 'string') {
         classs.push(item)
-      }else if( item.toString() === "[object Object]"){
-        for(const key in item) {
-          if(item[key]) {
+      } else if (item.toString() === '[object Object]') {
+        for (const key in item) {
+          if (item[key]) {
             classs.push(key)
           }
         }
       }
     })
   }
-  return classs.join(' ');
+  return classs.join(' ')
 }
-
-

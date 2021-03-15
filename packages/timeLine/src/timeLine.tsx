@@ -12,7 +12,7 @@ export default defineComponent({
   },
   setup (props:layTimeLineType, { slots }) {
     return () => {
-      return <div class={'layui-timeline ' +  `layui-timeline-${props.model}`}>
+      return <div class={'layui-timeline ' + `layui-timeline-${props.model}`}>
         {slots.default && slots.default()}
       </div>
     }

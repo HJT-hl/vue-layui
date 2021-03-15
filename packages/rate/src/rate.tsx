@@ -89,14 +89,15 @@ export default defineComponent({
         onChange && v.value !== undefined && onChange(v.value)
       }
 
-      let solid: number = 0, half: number = 0
+      let solid = 0
+      let half = 0
       if (v.value !== undefined) {
         solid = v.value / max * count | 0
         if (solid > count) solid = count
       }
       if (allowHalf && v.value !== undefined) {
         half = Math.round(v.value / max * count - solid)
-        if (solid == count) half = 0
+        if (solid === count) half = 0
       }
       return <div class='layui-inline'>
         <ul class='layui-rate' onMouseleave={mouseLeave} onClick={onClick}>
@@ -110,8 +111,10 @@ export default defineComponent({
             )
           }
           {
-            half ? <li class='layui-inline' onMousemove={(e) => mouseEnter(solid, e)}><i
-              class='layui-icon layui-icon-rate-half' style={{ color }}></i></li> : ''
+            half
+              ? <li class='layui-inline' onMousemove={(e) => mouseEnter(solid, e)}><i
+              class='layui-icon layui-icon-rate-half' style={{ color }}></i></li>
+              : ''
           }
           {
             (new Array(count - solid - half)).fill(true).map((item, index) =>

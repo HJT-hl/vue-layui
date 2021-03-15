@@ -1,0 +1,27 @@
+/* * Copyright © 2021-2021 siluxianren * Released under the MIT License. */
+.layui-elem-field {
+  border-color: #e6e6e6;
+}
+.layui-elem-field {
+  margin-bottom: 10px;
+  padding: 0;
+  border-width: 1px;
+  border-style: solid;
+}
+.layui-elem-field legend {
+  margin-left: 20px;
+  padding: 0 10px;
+  font-size: 20px;
+  font-weight: 300;
+}
+.layui-field-title {
+  margin: 10px 0 20px;
+  border-width: 0;
+  border-top-width: 1px;
+}
+.layui-field-box {
+  padding: 10px 15px;
+}
+.layui-field-title .layui-field-box {
+  padding: 10px 0;
+}

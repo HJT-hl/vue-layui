@@ -10,7 +10,7 @@ export default {
     type: Number as PropType<number>,
     default: 1
   },
-  showstep:{
+  showstep: {
     type: Boolean as PropType<boolean>,
     default: false
   },
@@ -38,7 +38,7 @@ export default {
     type: String as PropType<string>,
     default: '#000'
   },
-  textColor:{
+  textColor: {
     type: String as PropType<string>,
     default: '#fff'
   },

@@ -15,7 +15,7 @@ export default defineComponent({
     },
     // @ts-ignore
     bodyStyle: {
-      type: [String, Object ] as PropType<bodyStyleType>,
+      type: [String, Object] as PropType<bodyStyleType>,
       default: { padding: '20px' }
     }
   },

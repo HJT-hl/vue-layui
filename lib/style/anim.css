@@ -1,0 +1,195 @@
+/* * Copyright © 2021-2021 siluxianren * Released under the MIT License. */
+.layui-anim {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  display: inline-block;
+}
+.layui-anim-loop {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+.layui-trans,
+.layui-trans a {
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+/* 过度变换 */
+@-webkit-keyframes layui-rotate {
+  /* 循环旋转 */
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes layui-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.layui-anim-rotate {
+  -webkit-animation-name: layui-rotate;
+  animation-name: layui-rotate;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+@-webkit-keyframes layui-up {
+  /* 从最底部往上滑入 */
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    opacity: 0.3;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes layui-up {
+  from {
+    transform: translate3d(0, 100%, 0);
+    opacity: 0.3;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+.layui-anim-up {
+  -webkit-animation-name: layui-up;
+  animation-name: layui-up;
+}
+@-webkit-keyframes layui-upbit {
+  /* 微微往上滑入 */
+  from {
+    -webkit-transform: translate3d(0, 30px, 0);
+    opacity: 0.3;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes layui-upbit {
+  from {
+    transform: translate3d(0, 30px, 0);
+    opacity: 0.3;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+.layui-anim-upbit {
+  -webkit-animation-name: layui-upbit;
+  animation-name: layui-upbit;
+}
+@-webkit-keyframes layui-scale {
+  /* 放大 */
+  0% {
+    opacity: 0.3;
+    -webkit-transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes layui-scale {
+  0% {
+    opacity: 0.3;
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.layui-anim-scale {
+  -webkit-animation-name: layui-scale;
+  animation-name: layui-scale;
+}
+@-webkit-keyframes layui-scale-spring {
+  /* 弹簧式放大 */
+  0% {
+    opacity: 0.5;
+    -webkit-transform: scale(0.5);
+  }
+  80% {
+    opacity: 0.8;
+    -webkit-transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes layui-scale-spring {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.5);
+  }
+  80% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.layui-anim-scaleSpring {
+  -webkit-animation-name: layui-scale-spring;
+  animation-name: layui-scale-spring;
+}
+@-webkit-keyframes layui-fadein {
+  /* 渐现 */
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes layui-fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.layui-anim-fadein {
+  -webkit-animation-name: layui-fadein;
+  animation-name: layui-fadein;
+}
+@-webkit-keyframes layui-fadeout {
+  /* 渐隐 */
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes layui-fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.layui-anim-fadeout {
+  -webkit-animation-name: layui-fadeout;
+  animation-name: layui-fadeout;
+}

@@ -1,0 +1,47 @@
+/* * Copyright © 2021-2021 siluxianren * Released under the MIT License. */
+.layui-timeline {
+  padding-left: 5px;
+}
+.layui-timeline-left .layui-timeline-item:before {
+  left: 0;
+}
+.layui-timeline-left .layui-timeline-axis {
+  left: 0;
+  transform: translateX(-50%);
+}
+.layui-timeline-right .layui-timeline-item:before {
+  right: 0;
+}
+.layui-timeline-right .layui-text {
+  text-align: right;
+  padding-right: 20px;
+}
+.layui-timeline-right .layui-timeline-axis {
+  right: 0;
+  transform: translateX(50%);
+}
+.layui-timeline-alternate .layui-timeline-item:nth-child(2n+1) {
+  margin-left: 50%;
+}
+.layui-timeline-alternate .layui-timeline-item:nth-child(2n+1):before {
+  left: 0;
+  transform: translateX(-50%);
+}
+.layui-timeline-alternate .layui-timeline-item:nth-child(2n+1) .layui-timeline-axis {
+  left: 0;
+  transform: translateX(-50%);
+}
+.layui-timeline-alternate .layui-timeline-item:nth-child(2n) {
+  width: 50%;
+}
+.layui-timeline-alternate .layui-timeline-item:nth-child(2n):before {
+  right: 0;
+}
+.layui-timeline-alternate .layui-timeline-item:nth-child(2n) .layui-timeline-axis {
+  right: 0;
+  transform: translateX(50%);
+}
+.layui-timeline-alternate .layui-timeline-item:nth-child(2n) .layui-text {
+  text-align: right;
+  padding-right: 20px;
+}

@@ -1,5 +1,5 @@
 import { defineComponent, h, PropType } from 'vue'
-import { className } from '../../_utils/utils'
+import { className, emptyFun } from '../../_utils/utils'
 import './style.less'
 
 type name = number | string;
@@ -7,7 +7,7 @@ type name = number | string;
 interface TabPaneType {
   label: string;
   name: name;
-  updateTitles: (l: string, label: string,name: name) => void;
+  updateTitles: (l: string, label: string, name: name) => void;
   show: name;
 }
 
@@ -23,9 +23,8 @@ export default defineComponent({
       default: ''
     },
     updateTitles: {
-      type: Function as PropType<(l: string, label: string,name:name) => void>,
-      default: () => {
-      }
+      type: Function as PropType<(l: string, label: string, name: name) => void>,
+      default: emptyFun
     },
     show: {
       type: [String, Number] as PropType<name>,
@@ -35,13 +34,12 @@ export default defineComponent({
   setup (props: TabPaneType, { slots }) {
     let lastTitle = props.label
     return () => {
-      props.updateTitles(lastTitle, props.label,props.name)
+      props.updateTitles(lastTitle, props.label, props.name)
       lastTitle = props.label
       return <div
         class={className(['layui-tab-item', { 'layui-show': props.show === props.name }])}>
         {slots.default && slots.default()}
       </div>
-
     }
   }
 })

@@ -32,12 +32,13 @@ export default defineComponent({
   },
   setup (props: layTimeLineItemType, { slots }) {
     return () => {
-      const style:any = {'--line-color': props.lineColor}
+      const style: any = { '--line-color': props.lineColor }
       return <div class="layui-timeline-item" style={style}>
         <div class='layui-timeline-axis' style={{ color: props.iconColor }}>
           {
-            slots.icon ? slots.icon() :
-              <i class="layui-icon" style={{ height: '20px', width: '20px' }}>&#xe63f;</i>
+            slots.icon
+              ? slots.icon()
+              : <i class="layui-icon" style={{ height: '20px', width: '20px' }}>&#xe63f;</i>
           }
         </div>
         <div class="layui-timeline-content layui-text">

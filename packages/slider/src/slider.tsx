@@ -27,17 +27,16 @@ export default defineComponent({
     const tipsValue = ref(0)
     const tipsShow = ref(false)
     return () => {
-
       let barWH = 0, barBL = 0
       const wrapValues = [0, 0]
-      let wrapBtnsDom: any[] = []
+      const wrapBtnsDom: any[] = []
       let wrapDom: any, tempDom: any, wrapDom2: any
       let { step, max, min, range, modelValue, color } = props
-      //间隔值不能小于 1
+      // 间隔值不能小于 1
       if (step < 1) step = 1
-      //最大值不能小于最小值
+      // 最大值不能小于最小值
       if (max < min) max = min + step
-      //判断是否开启双滑块
+      // 判断是否开启双滑块
       let scaleFir: number, scaleSec: number, scale: number
       if (range) {
         modelValue = Array.isArray(modelValue) ? modelValue : [min, modelValue]
@@ -57,12 +56,11 @@ export default defineComponent({
         if (Array.isArray(modelValue)) {
           modelValue = Math.min(...modelValue)
         }
-        //初始值不能小于最小值且不能大于最大值
-        if (modelValue < modelValue) modelValue = min
+        // 初始值不能小于最小值且不能大于最大值
+        if (modelValue < min) modelValue = min
         if (modelValue > max) modelValue = max
         scale = Math.floor((modelValue - min) / (max - min) * 100)
         wrapValues[0] = scale
-
       }
       barWH = scale
       // @ts-ignore
@@ -71,12 +69,12 @@ export default defineComponent({
       let sliderWidth: number
 
       // 用于记录上一次值，值未变时，不触发change回调函数
-      let lastValue: number = 0, lastValues: number[] = [0, 0]
+      let lastValue = 0, lastValues = [0, 0]
       const stepM = 100 / ((max - min) / Math.ceil(step))
       const valueTo = (value: number) => {
         const oldLeft = value / sliderWidth * 100 / stepM
         let left = Math.round(oldLeft) * stepM
-        if (value == sliderWidth) {
+        if (value === sliderWidth) {
           left = Math.ceil(oldLeft) * stepM
         }
         return left
@@ -103,31 +101,26 @@ export default defineComponent({
         barWH = Math.abs(firLeft - secLeft)
         barBL = Math.min(firLeft, secLeft)
 
-
         const selfValue = min + Math.round((max - min) * offsetValue / 100)
 
-        //如果开启范围选择，则返回数组值
+        // 如果开启范围选择，则返回数组值
         if (props.range) {
           const arrValue = [
             wrapValues[0],
             wrapValues[1]
           ]
-          if (arrValue[0] > arrValue[1]) arrValue.reverse() //如果前面的圆点超过了后面的圆点值，则调换顺序
+          if (arrValue[0] > arrValue[1]) arrValue.reverse() // 如果前面的圆点超过了后面的圆点值，则调换顺序
           if (!arrayEqual(lastValues, arrValue)) {
             lastValues = arrValue
             emit('update:modelValue', arrValue)
             props.onChange && props.onChange(arrValue)
           }
-
-
         } else {
           if (lastValue !== selfValue) {
             emit('update:modelValue', selfValue)
             lastValue = selfValue
             props.onChange && props.onChange(selfValue)
-
           }
-
         }
       }
       const createMoveElem = (move: (e: MouseEvent) => void, up: () => void) => {
@@ -140,7 +133,6 @@ export default defineComponent({
         document.addEventListener('mousemove', move)
         document.addEventListener('mouseup', upCall)
         document.addEventListener('mouseleave', upCall)
-
       }
       const onMousedown = (index: number, e: MouseEvent) => {
         if (props.disabled) return
@@ -169,7 +161,7 @@ export default defineComponent({
         createMoveElem(move, up)
       }
 
-      //渲染 step
+      // 渲染 step
       const stepRender = []
       if (props.showstep) {
         const number = (max - min) / step
@@ -191,7 +183,9 @@ export default defineComponent({
       }
       return <div
         class={'layui-slider ' + (props.vertical ? 'layui-slider-vertical ' : ' ') + (props.disabled ? 'layui-disabled' : '')}
-        ref={(dom) => tempDom = dom}
+        ref={(dom) => {
+          tempDom = dom
+        }}
         style={{ height: props.height }}
       >
         {props.tips && tipsShow.value &&
@@ -212,20 +206,28 @@ export default defineComponent({
              }}
         ></div>
         <div class='layui-slider-wrap' style={{ [props.vertical ? 'bottom' : 'left']: wrapValues[0] + '%' }}
-             ref={(dom) => wrapDom = dom}>
+             ref={(dom) => {
+               wrapDom = dom
+             }}>
           <div class={'layui-slider-wrap-btn ' + (props.disabled ? 'layui-disabled' : '')}
                style={{ border: `2px solid ${color}` }}
-               ref={(dom) => wrapBtnsDom[0] = dom}
+               ref={(dom) => {
+                 wrapBtnsDom[0] = dom
+               }}
                onMousedown={(e) => onMousedown(0, e)}
           ></div>
         </div>
         {
           range &&
           <div class='layui-slider-wrap' style={{ [props.vertical ? 'bottom' : 'left']: wrapValues[1] + '%' }}
-               ref={(dom) => wrapDom2 = dom}>
+               ref={(dom) => {
+                 wrapDom2 = dom
+               }}>
             <div class={'layui-slider-wrap-btn ' + (props.disabled ? 'layui-disabled' : '')}
                  style={{ border: `2px solid ${color}` }}
-                 ref={(dom) => wrapBtnsDom[1] = dom}
+                 ref={(dom) => {
+                   wrapBtnsDom[1] = dom
+                 }}
                  onMousedown={(e) => onMousedown(1, e)}
             ></div>
           </div>
@@ -235,6 +237,3 @@ export default defineComponent({
     }
   }
 })
-
-
-

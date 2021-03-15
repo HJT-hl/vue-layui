@@ -1,0 +1,60 @@
+/* * Copyright © 2021-2021 siluxianren * Released under the MIT License. */
+
+/** 图标字体 **/
+@font-face {
+  font-family: 'layui-icon';
+  src: url('../fonts/iconfont.eot?v=256');
+  src: url('../fonts/iconfont.eot?v=256#iefix') format('embedded-opentype'), url('../fonts/iconfont.woff2?v=256') format('woff2'), url('../fonts/iconfont.woff?v=256') format('woff'), url('../fonts/iconfont.ttf?v=256') format('truetype'), url('../imgs/iconfont.svg?v=256#layui-icon') format('svg');
+}
+.layui-icon {
+  font-family: "layui-icon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.layui-inline {
+  margin-bottom: 5px;
+  margin-right: 10px;
+  position: relative;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+}
+.layui-rate,
+.layui-rate * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.layui-rate {
+  padding: 10px 5px 10px 0;
+  font-size: 0;
+}
+.layui-rate li i.layui-icon {
+  font-size: 20px;
+  color: #FFB800;
+}
+.layui-rate li i.layui-icon {
+  margin-right: 5px;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+.layui-rate li i:hover {
+  cursor: pointer;
+  transform: scale(1.12);
+  -webkit-transform: scale(1.12);
+}
+.layui-rate[readonly] li i:hover {
+  cursor: default;
+  transform: scale(1);
+}
+.layui-icon-rate-half:before {
+  content: "\e6c9";
+}
+.layui-icon-rate-solid:before {
+  content: "\e67a";
+}
+.layui-icon-rate:before {
+  content: "\e67b";
+}
