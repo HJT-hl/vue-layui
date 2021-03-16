@@ -1,25 +1,26 @@
 import { defineComponent, h, PropType } from 'vue'
 import './style.less'
 
+type ValueType = string | number | string[] | number[]
+
 interface collapseItemType {
-  name: string;
-  activeName?: string | Array<string>;
-  onCollapseItemClick?: (name: string) => void;
+  name: string | number;
+  activeName?: ValueType;
+  onCollapseItemClick?: (name: string | number) => void;
 }
 
-type ActiveKeyType = Array<string> | string;
 export default defineComponent({
   name: 'LayCollapseItem',
   props: {
     name: {
-      type: String as PropType<string>,
+      type: [String, Number] as PropType<string | number>,
       required: true
     },
     activeName: {
-      type: [Array, String] as PropType<ActiveKeyType>
+      type: [Array, String, Number] as PropType<ValueType>
     },
     onCollapseItemClick: {
-      type: Function as PropType<(name: string) => void>
+      type: Function as PropType<(name: string | number) => void>
     }
   },
   setup (props: collapseItemType, { slots }) {
@@ -27,6 +28,7 @@ export default defineComponent({
       const { activeName, name, onCollapseItemClick } = props
       let isOpen = false
       if (Array.isArray(activeName)) {
+        // @ts-ignore
         isOpen = activeName.includes(name)
       } else {
         isOpen = activeName === name

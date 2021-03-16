@@ -11,7 +11,7 @@ interface layTimeLineItemType {
 }
 
 export default defineComponent({
-  name: 'LayTimeLineItem',
+  name: 'LayTimelineItem',
   props: {
     title: {
       type: String as PropType<string>,

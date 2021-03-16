@@ -86,9 +86,9 @@ export default defineComponent({
           >{p.label}{props.closable &&
           <i class='layui-icon  layui-tab-close' onClick={(e) => handleTabClose(e, p)}>&#x1006;</i>}</li>)}
         </ul>
-        <div class="layui-tab-content">
-          {displayTab.find(({ props: p }) => p.name === props.modelValue)}
-        </div>
+        {displayTab.find(({ props: p }) => p.name === props.modelValue)}
+
+
       </div>
     }
   }

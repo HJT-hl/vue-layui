@@ -3,23 +3,24 @@ import './style.less'
 import { childrenAddProps } from '../../_utils/component'
 import { triggerElement } from '../../_utils/utils'
 
+type ValueType = string | number | string[] | number[]
+
 interface collapseType {
-  modelValue?: string | string[];
-  onChange?: (name: string | string[]) => void
+  modelValue?: ValueType;
+  onChange?: (name: ValueType) => void
 }
 
-type ActiveKeyType = Array<string> | string;
 export default defineComponent({
   name: 'LayCollapse',
   props: {
     modelValue: {
-      type: [Array, String] as PropType<ActiveKeyType>
+      type: [Array, String, Number] as PropType<ValueType>
     },
     'onUpdate:modelValue': {
       type: Function as PropType<() => void>
     },
     onChange: {
-      type: Function as PropType<(name: string | string[]) => void>
+      type: Function as PropType<(name: ValueType) => void>
     }
   },
   setup (props: collapseType, { slots, emit }) {

@@ -1,7 +1,4 @@
 /* * Copyright © 2021-2021 siluxianren * Released under the MIT License. */
-.layui-tab-item {
-  display: none;
-}
-.layui-show {
-  display: block !important;
+.layui-tab-content {
+  padding: 10px;
 }

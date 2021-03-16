@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vuedx-typecheck . && vite build",
     "serve": "vite preview",
     "lib:base-css": "node ./build/build.base.css.js",
     "lib": "cross-env NODE_ENV=production rimraf ./lib && node ./build/rollup.build && yarn lib:base-css",

@@ -1,5 +1,5 @@
 import { defineComponent, h, PropType } from 'vue'
-
+import './style.less'
 type name = number | string;
 
 interface TabPaneType {
@@ -20,6 +20,8 @@ export default defineComponent({
     }
   },
   setup (props: TabPaneType, { slots }) {
-    return () => slots.default && slots.default()
+    return () =>  <div class="layui-tab-content">
+      { slots.default && slots.default()}
+    </div>
   }
 })

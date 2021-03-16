@@ -1,13 +1,23 @@
 <template>
-    <Slider/>
-    <Tab v-model='name'
+  <Timeline model="">
+    <TimelineItem title="8月18日">
+      layui 2.0 的一切准备工作似乎都已到位。发布之弦，一触即发。
+      <br>不枉近百个日日夜夜与之为伴。因小而大，因弱而强。
 
-             type='brief'
-             :closable='true'
-    >
-      <TabPane v-for="item of arr" :label='item.label' :name='item.name' :key="item.label">{{item.content}}</TabPane>
-
-    </Tab>
+    </TimelineItem>
+    <TimelineItem title="8月19日">
+      layui 2.0 的一切准备工作似乎都已到位。发布之弦，一触即发。
+      <br>不枉近百个日日夜夜与之为伴。因小而大，因弱而强。
+    </TimelineItem>
+    <TimelineItem title="8月30日">
+      layui 2.0 的一切准备工作似乎都已到位。发布之弦，一触即发。
+      <br>不枉近百个日日夜夜与之为伴。因小而大，因弱而强。
+    </TimelineItem>
+    <TimelineItem title="8月54日">
+      layui 2.0 的一切准备工作似乎都已到位。发布之弦，一触即发。
+      <br>不枉近百个日日夜夜与之为伴。因小而大，因弱而强。
+    </TimelineItem>
+  </Timeline>
 </template>
 
 <script lang="ts">
@@ -16,6 +26,8 @@ import Container from '../packages/container/index'
 import Slider from '../packages/slider/index'
 import Tab from '../packages/tab/index'
 import TabPane from '../packages/tab-pane'
+import Timeline from '../packages/timeline/index'
+import TimelineItem from '../packages/timeline-item/index'
 
 export default defineComponent({
   name: 'App',
@@ -23,7 +35,9 @@ export default defineComponent({
     Container,
     Slider,
     Tab,
-    TabPane
+    TabPane,
+    Timeline,
+    TimelineItem
   },
   data(){
     return {

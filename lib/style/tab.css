@@ -99,9 +99,6 @@
   box-sizing: border-box;
   pointer-events: none;
 }
-.layui-tab-content {
-  padding: 10px;
-}
 /* Tab关闭 */
 .layui-tab-title li .layui-tab-close {
   position: relative;
