@@ -19,5 +19,7 @@
   "rate": "packages/rate/index.tsx",
   "slider": "packages/slider/index.tsx",
   "tab": "packages/tab/index.tsx",
-  "tab-pane": "packages/tab-pane/index.tsx"
+  "tab-pane": "packages/tab-pane/index.tsx",
+  "carousel": "packages/carousel/index.tsx",
+  "carousel-item": "packages/carousel-item/index.tsx"
 }

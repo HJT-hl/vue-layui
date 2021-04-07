@@ -1,39 +1,29 @@
 import { defineComponent, h, ref, watchEffect } from 'vue'
-import Tab from '../packages/tab'
-import TabPane from '../packages/tab-pane'
-import Button from '../packages/button'
+import Carousel from '../packages/carousel'
+import CarouselItem from '../packages/carousel-item'
 export default defineComponent({
   setup () {
-    const v = ref(1)
+    const children = ['skyblue' ,'#009688','green','#5FB878','pink'];
 
-    const color = ref('#5be22c')
-    const arr = ref( [
-      { label: '标题1', name: 1, content: '内容1' },
-      { label: '标题2', name: 2, content: '内容2' },
-      { label: '标题3', name: 3, content: '内容3' },
-      { label: '标题4', name: 4, content: '内容4' },
-    ])
-    let num = 5;
-    const add = ()=>{
-      arr.value.push({label: '标题'+num,name: num,content:'内容'+num})
-      num++;
-      v.value = 3;
-    }
+    return () => <div style='width:800px;margin: 100px auto;'>
+     <Carousel
+       width={800}
+       height={400}
+       autoplay={false}
+       index={3}
+       ref={(dom)=>{
+         setTimeout(() =>{
+           dom.goto(0)
 
-    return () => <div style='width:600px;margin: 100px auto;'>
-      <Tab v-model={v.value}
-           onClick={console.log}
-           onRemove={console.log}
-           type={'brief'}
-           closable={true}
-      >
-        {arr.value.map((item) => <TabPane label={item.label} name={item.name}>{item.content}</TabPane>)}
-         <TabPane label='标题7' name={7} >内容7</TabPane>
-
-      </Tab>
-      <Button onClick={add}>增加</Button>
-      <div>{v.value}</div>
-      <a href="">hhhhhhhhhhhhhh</a>
+         },3000)
+       }}
+     >
+       {
+         children.map((child,i)=><CarouselItem style={`width:100%;height:100%;backgroundColor:${child};`}>
+           条目{i}
+         </CarouselItem>)
+       }
+     </Carousel>
     </div>
   }
 })
