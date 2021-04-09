@@ -11,12 +11,6 @@ export default defineComponent({
        height={400}
        autoplay={false}
        index={3}
-       ref={(dom)=>{
-         setTimeout(() =>{
-           dom.goto(0)
-
-         },3000)
-       }}
      >
        {
          children.map((child,i)=><CarouselItem style={`width:100%;height:100%;backgroundColor:${child};`}>

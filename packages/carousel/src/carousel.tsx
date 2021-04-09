@@ -86,11 +86,10 @@ export default defineComponent({
       }
       //滑动切换
       const slide = (type: string, num: number) => {
-
-        const carouselItem = carouselDom && carouselDom.querySelectorAll('.layui-carousel-item')
+        if(! carouselDom.querySelectorAll('.layui-carousel-item') || haveSlide) return
+        const carouselItem =  carouselDom.querySelectorAll('.layui-carousel-item')
 
         const thisIndex = index
-        if (haveSlide) return
         //滑动方向
         if (type === 'sub') {
           subIndex(num)

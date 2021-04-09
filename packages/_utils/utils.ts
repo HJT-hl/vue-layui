@@ -47,3 +47,6 @@ export function className (name: Array<string | Record<string, boolean>> | Recor
   }
   return classs.join(' ')
 }
+
+
+
