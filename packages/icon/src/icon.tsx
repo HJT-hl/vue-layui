@@ -20,7 +20,7 @@ export default defineComponent({
     },
     color: {
       type: String as PropType<string>,
-      default: '#666'
+      default: ''
     }
   },
   setup (props: iconType) {
