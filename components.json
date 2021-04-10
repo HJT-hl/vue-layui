@@ -22,5 +22,6 @@
   "tab-pane": "packages/tab-pane/index.tsx",
   "carousel": "packages/carousel/index.tsx",
   "carousel-item": "packages/carousel-item/index.tsx",
-  "flow": "packages/flow/index"
+  "flow": "packages/flow/index",
+  "page": "packages/page/index"
 }

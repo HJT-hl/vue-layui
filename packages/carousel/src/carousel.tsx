@@ -86,7 +86,7 @@ export default defineComponent({
       }
       //滑动切换
       const slide = (type: string, num: number) => {
-        if(! carouselDom.querySelectorAll('.layui-carousel-item') || haveSlide) return
+        if(! carouselDom || haveSlide) return
         const carouselItem =  carouselDom.querySelectorAll('.layui-carousel-item')
 
         const thisIndex = index
