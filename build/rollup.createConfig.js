@@ -9,7 +9,6 @@ const replace = require('@rollup/plugin-replace')
 const json = require('rollup-plugin-json')
 const postcss = require('rollup-plugin-postcss')
 const filesize = require('rollup-plugin-filesize')
-const { cssUrl, importLoader } = require('@sixian/css-url')
 const fs = require('fs')
 const { getAssetsPath, env, fsExistsSync, chalkConsole } = require('./utils')
 const { esDir } = require('../config/rollup.build.config')
@@ -46,17 +45,9 @@ function createPlugins({ min } = {}) {
       exclude
     }),
     postcss({
-      plugins: [cssUrl({
-        imgOutput: getAssetsPath('/imgs'),
-        fontOutput: getAssetsPath('/fonts'),
-        cssOutput: getAssetsPath(styleOutputPath),
-        imgExtensions : /\.(png|jpg|jpeg|gif)$/,
-        fontExtensions: /.(ttf|woff|woff2|eot|svg)$/
-      })],
-      use: [ ['less',{ javascriptEnabled: true } ] , 'import-url'],
+      use: [ ['less',{ javascriptEnabled: true } ] ],
       inject: false,
       extract : true,
-      loaders: [importLoader]
     }),
     replace({
       exclude,
@@ -82,7 +73,7 @@ function build(builds) {
 
   const total = builds.length
   console.log('=============builds===============');
-  console.log(builds);
+  // console.log(builds);
   const next = async () => {
     chalkConsole.building(buildCount + 1, total)
     await buildEntry(builds[buildCount])

@@ -2,7 +2,7 @@ import { defineComponent, h, onBeforeUpdate, ref, VNode, watchEffect } from 'vue
 import './style.less'
 import props, { propsType } from './props'
 import { className } from '../../_utils/utils'
-
+// TODO : The theme is not tested.
 const DISABLED = 'layui-disabled'
 export default defineComponent({
   name: 'LayPage',

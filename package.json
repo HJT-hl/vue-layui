@@ -5,7 +5,8 @@
     "dev": "vite",
     "serve": "vite preview",
     "lib:base-css": "node ./build/build.base.css.js",
-    "lib": "cross-env NODE_ENV=production rimraf ./lib && node ./build/rollup.build && yarn lib:base-css",
+    "lib:font":  "node ./build/build.font.js",
+    "lib": "cross-env NODE_ENV=production rimraf ./lib && node ./build/rollup.build && yarn lib:base-css && yarn lib:font",
     "lint": "eslint ./packages --ext .vue,.js,.ts,tsx,jsx"
   },
   "dependencies": {
@@ -18,7 +19,6 @@
     "@rollup/plugin-babel": "^5.2.3",
     "@rollup/plugin-node-resolve": "^11.1.0",
     "@rollup/plugin-replace": "^2.3.4",
-    "@sixian/css-url": "^1.0.3",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
     "@vitejs/plugin-vue": "^1.1.2",

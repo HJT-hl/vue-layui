@@ -13,7 +13,7 @@ function  rmSync(FP){
       if (stats.isDirectory()){
           /*是目录，遍历目录*/
           let info = fs.readdirSync(FP);
-  
+
           /*目录有内容，先删掉目录的内容*/
           if (info.length){
               /*有内容*/
@@ -22,16 +22,36 @@ function  rmSync(FP){
                   rmSync(p);
               });
           }
-  
+
           /*最终内容*/
           fs.rmdirSync(FP);
       }
   }catch (e){}
 
 }
-
+function copyDirectory(src, dest) {
+  if (  fs.existsSync(dest) === false) {
+    fs.mkdirSync(dest);
+  }
+  if (fs.existsSync(src) === false) {
+    return false;
+  }
+  // console.log("src:" + src + ", dest:" + dest);
+  // 拷贝新的内容进去
+  const dirs = fs.readdirSync(src);
+  dirs.forEach(function(item){
+    const item_path = path.join(src, item);
+    const temp = fs.statSync(item_path);
+    if (temp.isFile()) { // 是文件
+      fs.copyFileSync(item_path, path.join(dest, item));
+    } else if (temp.isDirectory()){ // 是目录
+      copyDirectory(item_path, path.join(dest, item));
+    }
+  });
+}
 module.exports = {
   rmSync,
+  copyDirectory,
   getAssetsPath(_path = '.') {
     return path.posix.join(outputPath, _path)
   },
@@ -57,5 +77,6 @@ module.exports = {
       return false
     }
     return true
-  }
+  },
+
 }
