@@ -24,5 +24,6 @@
   "carousel-item": "packages/carousel-item/index.tsx",
   "flow": "packages/flow/index",
   "page": "packages/page/index",
-  "transfer" : "packages/transfer/index"
+  "transfer" : "packages/transfer/index",
+  "upload" : "packages/upload/index"
 }

@@ -1,58 +1,83 @@
-import { defineComponent, h, ref, watchEffect } from 'vue'
+import { defineComponent, h, Ref, ref, watchEffect } from 'vue'
 
-import Page from '../packages/page'
-import Icon from '../packages/icon'
-import Transfer from '../packages/transfer'
-export default defineComponent({
+import Upload from '../packages/upload'
+import Button from '../packages/button'
+
+function memo (...arg: any) {
+  console.log(arg)
+}
+
+// TODO : Button 本身事件要给他
+// TODO : 无解性插槽
+const App = defineComponent({
   setup () {
-    const children = ['skyblue', '#009688', 'green', '#5FB878', 'pink']
-    const curr = ref(3)
-    const limit = ref(5)
-    const value = ref(["1","2"])
-    const   data1 = [
-      {"value": "1", "title": "李白"}
-      ,{"value": "2", "title": "杜甫"}
-      ,{"value": "3", "title": "苏轼"}
-      ,{"value": "4", "title": "李清照",checked: true}
-      ,{"value": "5", "title": "鲁迅", "disabled": true,checked: true}
-      ,{"value": "6", "title": "巴金"}
-      ,{"value": "7", "title": "冰心"}
-      ,{"value": "8", "title": "矛盾"}
-      ,{"value": "10", "title": "贤心"}
-      ,{"value": 11, "title": "天天"}
-      ,{"value": 12, "title": "让人"}
-      ,{"value": 13, "title": "威威"}
-    ]
-
+    const filePreviewList: Ref<string[]> = ref([])
+    const up = ref();
     return () => <div style='width:800px;margin: 100px auto;'>
-      <Transfer data={data1} v-model={value.value} title={['总共', '选择']} width={200} height={300} onChange={(item,direction) =>{
-        console.log(item,direction);
-        console.log(data1)
-      }} showSearch={false}/>
-      <div>{value.value.toString()}</div>
-      <Page v-model={curr.value}
-            count={100}
-            groups={5}
-            limit={limit.value}
-            layout={['prev', 'page', 'next', 'count']}
-            onJump={(curr: number) => {
-              limit.value = curr
-            }}
-            onNext={(curr: number) => curr + 2}
-            onPrev={(curr: number) => curr - 2}
-            v-slots={{
-              prev: () => <Icon
-                icon="prev"
-              />,
-              next: () => <Icon
-                icon="next"
-              />,
-              first: () => '首页',
-              end: () => '末尾'
-            }}
-      >
-      </Page>
+      <Upload
+        url="http://localhost:8000/upload"
+        style={{position: 'absolute',left:0,top : 0}}
+        accept="images"
+        field="name"
+        data={(file: File) => {
+          return {
+            age: 18,
+            filename: file.name,
+            date: new Date().getMinutes()
+          }
+        }}
+        size={5}
+        multiple={true}
+        drag={true}
+        auto={false}
+        onSuccess={console.log}
+        onError={(status: number, file: File) => {
+          if (status === 0) {
+            console.error('文件类型错误')
+          } else if (status === 1) {
+            console.error('文件过大')
+          }else if(status === 2){
+            console.error('文件过多')
+          }else if(status === 3){
+            console.error('服务器错误')
+          }
+        }}
+        onUploadBefore={(file: File,index: number,files: File[]) => {
 
+        }}
+        onPreview={(result: string) => {
+          filePreviewList.value.push(result)
+        }}
+        onChoose={(files: File[],fs:File[])=>{
+          console.log(files,fs)
+        }}
+        ref={up}
+      >
+        <Button >我是自定义的插槽</Button>
+      </Upload>
+      <Button onClick={()=>{
+        up.value.upload();
+      }}>确认上传</Button>
+      <ul style={{ display: 'flex' }}>
+        {
+          filePreviewList.value.map((src) => {
+            return <li><img src={src} alt=""/></li>
+          })
+        }
+      </ul>
+
+      <Button
+        onClick={() => {
+          const input = document.createElement('input')
+          input.type = 'file'
+
+          input.addEventListener("change",(e)=>{
+            console.log(e.target.files)
+          })
+          input.click()
+      }}>零零零零</Button>
     </div>
   }
 })
+
+export default App

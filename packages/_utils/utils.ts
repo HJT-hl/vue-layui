@@ -22,7 +22,7 @@ export function arrayEqual (obj1: any[], obj2: any[]): boolean {
   return true
 }
 
-export function className (name: Array<string | Record<string, boolean|undefined|null>> | Record<string, boolean|undefined|null>): string {
+export function className (name: Array<string | Record<string, boolean | undefined | null>> | Record<string, boolean | undefined | null>): string {
   const classs: string[] = []
   if (name.toString() === '[object Object]') {
     for (const key in name) {
@@ -47,25 +47,55 @@ export function className (name: Array<string | Record<string, boolean|undefined
   }
   return classs.join(' ')
 }
-export function deepCopy(obj:any):any{
 
-  const deepClone1 = (obj:any):any=>{
-    let res:any = obj;
-    if(Array.isArray(obj)){
-      res = [];
-      for(let value of obj){
-        res.push(deepClone1(value));
+export function deepCopy (obj: any): any {
+
+  const deepClone1 = (obj: any): any => {
+    let res: any = obj
+    if (Array.isArray(obj)) {
+      res = []
+      for (let value of obj) {
+        res.push(deepClone1(value))
       }
-    }else if(typeof obj === "object"){
+    } else if (typeof obj === 'object') {
       res = {}
-      for(let key of Object.keys(obj)){
-        res[key] = deepClone1(obj[key]);
+      for (let key of Object.keys(obj)) {
+        res[key] = deepClone1(obj[key])
       }
     }
-    return res;
+    return res
   }
-  const deepClone2 = (obj:any):any=> JSON.parse(JSON.stringify(obj));
-  return Object.keys(obj).length  > 1000?deepClone1(obj) : deepClone2(obj);
+  const deepClone2 = (obj: any): any => JSON.parse(JSON.stringify(obj))
+  return Object.keys(obj).length > 1000 ? deepClone1(obj) : deepClone2(obj)
+}
+
+export function ajax (options: {
+  url: string,
+  data: FormData,
+  type: string,
+  success: (res:any) => void;
+  error: () => void;
+  headers: Record<string,string>
+}) {
+
+  const xhr = new XMLHttpRequest()
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+      if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+        options.success(JSON.parse(xhr.responseText))
+      } else {
+        options.error()
+      }
+    }
+  }
+
+  for(const key in options.headers){
+    xhr.setRequestHeader(key, options.headers[key]);
+  }
+  xhr.open(options.type, options.url, true)
+  xhr.send(options.data);
+
+
 }
 
 
