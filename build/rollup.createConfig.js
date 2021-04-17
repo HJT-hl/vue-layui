@@ -27,6 +27,9 @@ function createPlugins({ min } = {}) {
     vue({
       css: false
     }),
+    alias({
+      entries: aliasConfig.entries
+    }),
     json(),
     filesize(),
     nodeResolve({
@@ -51,11 +54,9 @@ function createPlugins({ min } = {}) {
     }),
     replace({
       exclude,
-      'process.env.NODE_ENV': JSON.stringify(env),
+      'process.env.NODE_ENV': JSON.stringify(env)
     }),
-    alias({
-      entries: aliasConfig.entries
-    }),
+
 
   ]
   if (min) {
@@ -127,7 +128,8 @@ async function write({ output, file, fileName, format, fullName } = {}) {
       !fsExistsSync(filePath) && fs.writeFileSync(filePath, banner + source.toString())
     } else {
       const filePath = isEs(format) ? getAssetsPath(`/${es}/${fullName}`) : file
-      let codeSource = code.replace(/\s?const\s/g, ' var ')
+
+      let codeSource = code.replace(/\s?const\s/g, ' var ').replace(/var\s([^\s]*)\s=\srequire\('@p\/([^']*)'\);/g,`var $1 = require('./$2');`)
       fs.writeFileSync(filePath, banner + codeSource)
     }
   }

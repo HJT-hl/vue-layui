@@ -14,7 +14,6 @@ formatTypeList.forEach(({ format, min, suffix } = {}) => {
   for(const [output, input] of Object.entries( components)){
     pkg.push({ min, format, suffix, moduleName: output, input, output })
   }
-
 })
 pkg = pkg.concat(addons)
 

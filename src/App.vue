@@ -29,7 +29,7 @@
         loading...
       </template>
     </Flow>
-
+    <ButtonContainer></ButtonContainer>
   </div>
 </template>
 
@@ -39,11 +39,10 @@ import Carousel from '../packages/carousel'
 import CarouselItem from '../packages/carousel-item'
 import Button from '../packages/button'
 import Flow from '../packages/flow'
-
 export default defineComponent({
   name: 'App',
   components: {
-    Carousel, CarouselItem, Button, Flow
+    Carousel, CarouselItem, Button, Flow,ButtonContainer
   },
   data () {
     return {
