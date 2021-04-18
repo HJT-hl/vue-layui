@@ -26,5 +26,6 @@
   "page": "packages/page/index",
   "transfer" : "packages/transfer/index",
   "upload" : "packages/upload/index",
-  "edit": "packages/edit/index"
+  "edit": "packages/edit/index",
+  "dialog": "packages/dialog/index"
 }
