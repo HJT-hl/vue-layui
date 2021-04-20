@@ -1,0 +1,25 @@
+/*屏幕尺寸*/
+/* 小型屏幕(平板) */
+/* 中型屏幕(桌面) */
+/* 大型屏幕(桌面) */
+@media screen and (min-width: 768px) {
+  .layui-container {
+    width: 750px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .layui-container {
+    width: 970px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .layui-container {
+    width: 1170px;
+  }
+}
+.layui-container {
+  position: relative;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+}

@@ -1,4 +1,33 @@
-import Icon from './src/icon'
+import { defineComponent, h, PropType } from 'vue'
 import { withInstall } from '../_utils/component'
+import './style/index'
 
-export default withInstall(Icon)
+interface iconType {
+  icon: string;
+  size?: number;
+  color?: string;
+}
+
+export default defineComponent({
+  name: 'LayIcon',
+  props: {
+    icon: {
+      type: String as PropType<string>,
+      required: true
+    },
+    size: {
+      type: Number as PropType<number>,
+      default: 16
+    },
+    color: {
+      type: String as PropType<string>,
+      default: ''
+    }
+  },
+  setup (props: iconType) {
+    return () => {
+      const icon = `layui-icon-${props.icon}`
+      return <i class={'layui-icon ' + icon} style={{ fontSize: props.size + 'px', color: props.color }}></i>
+    }
+  }
+})

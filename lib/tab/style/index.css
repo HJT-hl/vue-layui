@@ -1,0 +1,120 @@
+.layui-tab {
+  margin: 10px 0;
+  text-align: left !important;
+}
+.layui-tab-brief > .layui-tab-title .layui-this {
+  color: var(--brief-font--, #009688);
+}
+.layui-tab-brief > .layui-tab-title .layui-this:after,
+.layui-tab-brief > .layui-tab-more li.layui-this:after {
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid var(--brief-underline--, #5FB878);
+}
+.layui-tab-brief[overflow] > .layui-tab-title .layui-this:after {
+  top: -1px;
+}
+.layui-tab-card {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  border-color: #e6e6e6;
+}
+.layui-tab-card > .layui-tab-title {
+  background-color: #f2f2f2;
+}
+.layui-tab-card > .layui-tab-title li {
+  margin-right: -1px;
+  margin-left: -1px;
+}
+.layui-tab-card > .layui-tab-title .layui-this {
+  background-color: #fff;
+}
+.layui-tab-card > .layui-tab-title .layui-this:after {
+  border-top: none;
+  border-width: 1px;
+  border-bottom-color: #fff;
+}
+.layui-tab-card > .layui-tab-title .layui-tab-bar {
+  height: 40px;
+  line-height: 40px;
+  border-radius: 0;
+  border-top: none;
+  border-right: none;
+}
+.layui-tab-card > .layui-tab-more .layui-this {
+  background: none;
+  color: #5FB878;
+}
+.layui-tab-card > .layui-tab-more .layui-this:after {
+  border: none;
+}
+.layui-tab-title {
+  position: relative;
+  padding: 0;
+  left: 0;
+  height: 40px;
+  white-space: nowrap;
+  font-size: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  transition: all 0.2s;
+  border-color: #e6e6e6;
+  user-select: none;
+}
+.layui-tab-title li {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.layui-tab-title li {
+  position: relative;
+  line-height: 40px;
+  min-width: 65px;
+  padding: 0 15px;
+  text-align: center;
+  cursor: pointer;
+}
+.layui-tab-title li a {
+  display: block;
+}
+.layui-tab-title .layui-this {
+  color: #000;
+}
+.layui-this:after {
+  border-color: #e6e6e6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  width: 100%;
+  height: 41px;
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-color: #fff;
+  border-radius: 2px 2px 0 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+/* Tab关闭 */
+.layui-tab-title li .layui-tab-close {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 20px;
+  margin-left: 8px;
+  top: 1px;
+  text-align: center;
+  font-size: 14px;
+  color: #c2c2c2;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+.layui-tab-title li .layui-tab-close:hover {
+  border-radius: 2px;
+  background-color: #FF5722;
+  color: #fff;
+}

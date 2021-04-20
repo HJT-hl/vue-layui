@@ -1,0 +1,14 @@
+.layui-row:before,
+.layui-row:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.space {
+  --m: 0px;
+  --p: 0px;
+  margin: var(--m);
+}
+.space > * {
+  padding: var(--p);
+}

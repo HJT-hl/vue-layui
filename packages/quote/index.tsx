@@ -1,4 +1,46 @@
-import Quote from './src/quote'
+import { defineComponent, h, PropType } from 'vue'
 import { withInstall } from '../_utils/component'
+import './style/index'
 
-export default withInstall(Quote)
+interface QuoteType {
+  color?: string;
+  leftColor?: string;
+  nm?: boolean;
+}
+
+export default withInstall(defineComponent({
+  name: 'LayQuote',
+  props: {
+    color: {
+      type: String as PropType<string>,
+      default: ''
+    },
+    leftColor: {
+      type: String as PropType<string>,
+      default: ''
+    },
+    nm: {
+      type: Boolean as PropType<boolean>,
+      default: false
+    }
+  },
+  setup (props: QuoteType, { slots }) {
+    return () => {
+      const { color, leftColor, nm } = props
+      let style = {}
+      if (nm) {
+        style = {
+          borderColor: color,
+          borderLeftColor: leftColor
+        }
+      } else {
+        style = { backgroundColor: color, borderLeftColor: leftColor }
+      }
+      return <blockquote
+        class={'layui-elem-quote ' + (nm ? 'layui-quote-nm' : '')}
+        style={style}>
+        {slots.default && slots.default()}
+      </blockquote>
+    }
+  }
+}))

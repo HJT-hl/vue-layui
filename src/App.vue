@@ -4,45 +4,27 @@
       ref="ele"
       :width='800'
       :height='400'
-      :autoplay='true'
+      :autoplay='false'
       :index='0'
     >
       <CarouselItem v-for="(child,i) of children" :style="{width:'100%',height:'100%',backgroundColor: child}">
         条目{{ i }}
       </CarouselItem>
     </Carousel>
-    <Button @click="prev">上一个</Button>
-    <Button @click="next">下一个</Button>
-    <Flow @done="done"
-          :isAuto="false"
-          :mb="50"
-          :height="600"
-    >
-      <div v-for="i of flowList">{{ i }}</div>
-      <template v-slot:end>
-        人家也是有底线的
-      </template>
-      <template v-slot:notAuto>
-        点击加载
-      </template>
-      <template v-slot:loading>
-        loading...
-      </template>
-    </Flow>
-    <ButtonContainer></ButtonContainer>
+
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, watchEffect } from 'vue'
-import Carousel from '../packages/carousel'
-import CarouselItem from '../packages/carousel-item'
-import Button from '../packages/button'
-import Flow from '../packages/flow'
+import {Carousel,CarouselItem} from '../packages'
+// import Carousel from '../packages/carousel'
+// import CarouselItem from '../packages/carousel-item'
+
 export default defineComponent({
   name: 'App',
   components: {
-    Carousel, CarouselItem, Button, Flow,ButtonContainer
+    Carousel, CarouselItem
   },
   data () {
     return {
@@ -76,14 +58,15 @@ export default defineComponent({
         }
         next(page < 8)
       }, 1000)
-
     }
   }
 })
 </script>
 
 <style>
-
+  body {
+    background : #000;
+  }
 </style>
 
 
