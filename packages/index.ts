@@ -28,6 +28,10 @@ import Timeline from './timeline'
 import TimelineItem from './timeline-item'
 import Transfer from './transfer'
 import Upload from './upload'
+import LayerOpen ,{layerClose as LayerClose} from './vc-layer-open'
+import alert  from './layer-alert'
+import confirm from './layer-confirm'
+import message from './layer-message'
 
 const components = [
   Anim,
@@ -65,6 +69,12 @@ const install = function (app: App): App {
   components.forEach((component: any) => {
     app.use(component)
   })
+  app.config.globalProperties.$layerOpen = LayerOpen
+  app.config.globalProperties.$layerClose = LayerClose
+  app.config.globalProperties.$alert = alert
+  app.config.globalProperties.$confirm = confirm
+  app.config.globalProperties.$message = message
+
   // app.config.globalProperties.$message = message;
   // app.config.globalProperties.$notification = notification;
   // app.config.globalProperties.$info = Modal.info;
@@ -106,7 +116,12 @@ export {
   Timeline,
   TimelineItem,
   Transfer,
-  Upload
+  Upload,
+  LayerOpen,
+  LayerClose,
+  alert,
+  confirm,
+  message
 }
 
 export default {

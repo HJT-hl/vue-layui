@@ -74,3 +74,9 @@ export function ajax (options: {
   xhr.open(options.type, options.url, true)
   xhr.send(options.data)
 }
+// 是否为函数，是就执行不是则不做处理
+export function funExe(callback:any,...arg:any[]):any {
+  if(typeof callback === 'function'){
+    return callback(...arg);
+  }
+}
