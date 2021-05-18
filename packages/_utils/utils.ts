@@ -44,9 +44,20 @@ export function className (name: Array<string | Record<string, boolean | undefin
   }
   return classs.join(' ')
 }
-
-export function deepCopy (obj: unknown): any {
-  return JSON.parse(JSON.stringify(obj))
+export function deepCopy (obj: any): any {
+  let res :any= obj
+  if(Array.isArray(obj)){
+    res = []
+    for(const item of obj){
+      res.push( deepCopy(item) )
+    }
+  }else if(typeof obj === "object"){
+    res = {}
+    for(const [key,value] of Object.entries(obj)){
+      res[key] = deepCopy(value)
+    }
+  }
+  return res
 }
 
 export function ajax (options: {
